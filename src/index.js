@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom'
 import './index.css'
 
 class Header extends Component {
-    render (){
+    renderGoodWord (goodWord,baddWord){
         const isGoodWord = true;
-        const goodWord = <strong>is good</strong>
-        const baddWord = <strong>is not good</strong>
-        return (
+        return isGoodWord ? goodWord : baddWord;
+    }
+    render (){
+              return (
             <div>
             <h1>React 小书</h1>
-                {isGoodWord ? goodWord : baddWord}
+                {this.renderGoodWord(
+                    <strong>is good</strong>,
+                    <strong>is not good</strong>
+                )}
             </div>
             
         )
