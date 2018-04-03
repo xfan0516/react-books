@@ -2,19 +2,59 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-class Header extends Component {
-    renderGoodWord (goodWord,baddWord){
-        const isGoodWord = true;
-        return isGoodWord ? goodWord : baddWord;
-    }
-    render (){
-              return (
+class Title extends Component {
+    render(){
+        return (
             <div>
-            <h1>React 小书</h1>
-                {this.renderGoodWord(
-                    <strong>is good</strong>,
-                    <strong>is not good</strong>
-                )}
+                <h1> React 小书</h1>
+
+            </div>
+        )
+    }
+}
+
+class Header extends Component {
+    render (){
+        return (
+            <div>
+                <h2 style={{color: '#f55'}}>自定义的组件都必须要用大写字母开头，普通的 HTML 标签都用小写字母开头。</h2>
+                <h1>this a Header</h1>
+                <Title / >
+            </div>
+            
+        )
+    }
+}
+
+class Main extends Component {
+    render (){
+        return (
+            <h1>
+            this a Main
+            </h1>
+            
+        )
+    }
+}
+
+class Footer extends Component {
+    render (){
+        return (
+            <h1>
+            this a Footer
+            </h1>
+            
+        )
+    }
+}
+
+class Index extends Component {
+    render (){
+        return (
+            <div>
+                <Header />
+                <Main />
+                <Footer />
             </div>
             
         )
@@ -22,6 +62,6 @@ class Header extends Component {
 }
 
 ReactDOM.render(
-    <Header />,
+    <Index />,
     document.getElementById("root")
 )
