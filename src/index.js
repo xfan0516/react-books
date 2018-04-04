@@ -114,19 +114,40 @@ class Dog extends Component {
     }
 } */
 
+// 需要手动将实例方法bind到当前实例上去在传入给react.js
 class Title extends Component{
     handleClickOnTitle(event){
         console.log(event.target.innerHTML) //react 小书
+        console.log(this) 
     }
     render (){
         return (
-            <h1 onClick={this.handleClickOnTitle}>
+            <h1 onClick={this.handleClickOnTitle.bind(this)}>
+                react 小书
+            </h1>
+        )
+    }
+}
+// 你也可以在 bind 的时候给事件监听函数传入一些参数：
+class Title1 extends Component{
+    handleClickOnTitle(hello,word,event){ // **注意 event一定要放在最后边
+        console.log(event.target.innerHTML) //react 小书
+        console.log(this) 
+        console.log(word)  // hello
+    }
+    render (){
+        return (
+            <h1 onClick={this.handleClickOnTitle.bind(this,'hello','word')}>
                 react 小书
             </h1>
         )
     }
 }
 ReactDOM.render(
-    <Title />,
+    <div>
+        <Title />
+        <Title1 />
+    </div>
+    ,
     document.getElementById("root")
 )
