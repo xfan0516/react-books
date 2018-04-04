@@ -60,8 +60,8 @@ class Index extends Component {
         )
     }
 } */
-
-class Hose extends Component {
+/* 搭房子 */
+/* class Hose extends Component {
     render(){
         return(
             <div className="hose">
@@ -112,8 +112,21 @@ class Dog extends Component {
             </h1>
         )
     }
+} */
+
+class Title extends Component{
+    handleClickOnTitle(event){
+        console.log(event.target.innerHTML) //react 小书
+    }
+    render (){
+        return (
+            <h1 onClick={this.handleClickOnTitle}>
+                react 小书
+            </h1>
+        )
+    }
 }
 ReactDOM.render(
-    <Hose />,
+    <Title />,
     document.getElementById("root")
 )
