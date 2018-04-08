@@ -2,26 +2,32 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-class Dog extends Component {
-    bark(){
-        console.log("bark")
-        this.run()
+class LikeButton extends Component {
+    constructor(){
+        super();
+        this.state = {
+            isLike: false
+        }
     }
-    run(){
-        console.log("run")
-
+    // setState 接受函数参数
+    handleClickOnLikeButton(){
+        console.log(this.state.isLike)
+        this.setState({
+            isLike: !this.state.isLike
+        })
+        console.log(this.state.isLike)
     }
     render(){
         return (
-            <h1 onClick={this.bark.bind(this)}>
-                Dog
-            </h1>
+            <button onClick={this.handleClickOnLikeButton.bind(this)}>
+                {this.state.isLike ? '取消': '点赞'}👍
+            </button>
         )
     }
 }
 ReactDOM.render(
     <div>
-        <Dog />
+        <LikeButton />
     </div>
     ,
     document.getElementById("root")
