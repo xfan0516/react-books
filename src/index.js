@@ -15,7 +15,9 @@ class LikeButton extends Component {
       isLiked: false
     }
   }
+  // props 不可变
   handleClickOnLikeButton() {
+    // this.props.likedText = '取消' j就会报错
     this.setState({
       isLiked: !this.state.isLiked
     })
@@ -32,14 +34,31 @@ class LikeButton extends Component {
       </div>)
   }
 }
-// 通过对象的方式传入props
-// 还可以往组件里传入一个函数
+// 通过父组件修改props
 class Index extends Component {
+  constructor(){
+    super();
+    this.state = {
+      likedText: '已赞',
+      unlikedText: '点赞'
+    }
+  }
+  handleClickChange(){
+    this.setState({
+      likedText: '取消',
+      unlikedText: '点赞',
+    })
+  }
   render() {
     return (
-      <LikeButton wordings={{ likedText: '已赞', unlikedText: '赞' }}
+      <div>
+        <LikeButton 
+        likedText={this.state.likedText} 
+        unlikedText={this.state.unlikedText} 
         onClick={() => console.log('click on like button!')}
       />
+      <button onClick={this.handleClickChange.bind(this)}>改变props</button>
+      </div>
     )
   }
 }
