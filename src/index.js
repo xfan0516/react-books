@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-
+// 所以 React.js 提供了一种方式 defaultProps，可以方便的做到默认配置。
 class LikeButton extends Component {
+  static defaultProps = {
+    likedText: '取消',
+    unlikedText: '点赞'
+  }
+
   constructor() {
     super()
     /* TODO */
@@ -14,7 +19,7 @@ class LikeButton extends Component {
     this.setState({
       isLiked: !this.state.isLiked
     })
-    if(this.props.onClick){
+    if (this.props.onClick) {
       this.props.onClick()
     }
   }
@@ -22,11 +27,8 @@ class LikeButton extends Component {
 
   render() {
 
-    const likedText = this.props.likedText || '取消';
-    const unLikedText = this.props.unLikedText || '点赞';
-    var wordings = this.props.wordings || { likedText: '已赞', unlikedText: '赞' }
     return (<div onClick={this.handleClickOnLikeButton.bind(this)}>
-      {this.state.isLiked ? wordings.likedText : wordings.unlikedText}👍
+      {this.state.isLiked ? this.props.likedText : this.props.unlikedText}👍
       </div>)
   }
 }
