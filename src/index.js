@@ -2,46 +2,33 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-class Dog extends Component {
+class LikeButton extends Component {
     constructor () {
       super()
       /* TODO */
       this.state = {
-        isBarking: false,
-        isRunning: false
+        isLiked: false
       }
     }
-    
-    bark () {
-      /* TODO */
-      console.log("isBarking")
+    handleClickOnLikeButton(){
       this.setState({
-        isBarking: true
+        isLiked: !this.state.isLiked
       })
-      this.run()
     }
     
-    run () {
-      /* TODO */
-      this.setState({
-        isBarking: false,
-        isRunning: true
-      })
-      console.log("isRunning")
-      setTimeout(()=>{
-        this.setState({
-            isRunning: false
-          })
-      },20)
-    }
+    
    
     render () {
-      return (<div onClick={this.bark.bind(this)}>DOG</div>)
+      const likedText = this.props.likedText || '取消';
+      const unLikedText = this.props.unLikedText || '点赞';
+      return (<div onClick={this.handleClickOnLikeButton.bind(this)}>
+          {this.state.isLiked ? likedText : unLikedText}👍
+      </div>)
     }
   }
 ReactDOM.render(
     <div>
-        <Dog />
+        <LikeButton likedText="已赞" unLikedText="点赞"/>
     </div>
     ,
     document.getElementById("root")
