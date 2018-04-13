@@ -2,47 +2,36 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
-const users = [
-  { username: 'Jerry', age: 21, gender: 'male' },
-  { username: 'Tomy', age: 22, gender: 'male' },
-  { username: 'Lily', age: 19, gender: 'female' },
-  { username: 'Lucy', age: 20, gender: 'female' }
+const lessons = [
+  { title: 'Lesson 1: title', description: 'Lesson 1: description' },
+  { title: 'Lesson 2: title', description: 'Lesson 2: description' },
+  { title: 'Lesson 3: title', description: 'Lesson 3: description' },
+  { title: 'Lesson 4: title', description: 'Lesson 4: description' }
 ]
-const User = (props) => {
-  const { user } =  props;
+const Lesson = (props) =>{
+  /* TODO */
+  const {lessons} = props;
   return (
     <div>
-      <span>{user.username} </span>,
-      <span>{user.age} </span>,
-      <span>{user.gender}</span>
+      <h1>{lessons.title}</h1>
+      <p>{lessons.description}</p>
     </div>
   )
 }
-class Index extends Component {
-  render () {
-    return (
+
+class LessonsList extends Component {
+  /* TODO */
+  render(){
+    return(
       <div>
-        {users.map((item,i) => <User user={item} key={i}/>)}
-       {/*  {users.map((item,i) =>{
-          return(
-            <div key={i}>
-
-              <span>{item.username} </span>,
-              <span>{item.age} </span>,
-              <span>{item.gender}</span>
-              <hr />
-            </div>
-
-          )
-        } )} */}
+        {lessons.map((item,i) => <Lesson lessons={item} key={i} />)}
       </div>
     )
   }
 }
-
 ReactDOM.render(
   <div>
-    <Index />
+    <LessonsList />
   </div>
   ,
   document.getElementById("root")
