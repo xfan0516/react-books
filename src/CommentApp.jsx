@@ -3,19 +3,21 @@ import CommentInput from './CommentInput';
 import CommentList from './CommentList';
 
 class CommentApp extends Component {
-/*     constructor(){
+    constructor(){
         super();
+        this.state = {}
 
-    } */
+    }
     handleOnsubmit(comments){
-        console.log(comments)
+        // console.log(comments)
+        this.setState(comments)
 
     }
     render(){
         return (
             <div className="commentapp">
                 <CommentInput onSubmit={this.handleOnsubmit.bind(this)}/>
-                <CommentList />
+                <CommentList comments={this.state}/>
             </div>
         )
     }
